@@ -10,8 +10,9 @@ module ActiveSupport
       def write(key, value, options = nil)
         super do
           method = options && options[:unless_exist] ? :set_unless_exists : :set
-          @data.send method, key, value, options
-          @data.expire key, options[:expire] if options && options[:expire]
+          returning @data.send(method, key, value, options) do 
+            @data.expire key, options[:expire] if options && options[:expire]
+	  end
         end
       end
 
