@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ole Riesenberg"]
   s.date = %q{2010-03-26}
-  s.description = %q{redis namespaced cache store for rails 3, based on redis-store}
+  s.description = %q{A namespaced Redis Cache Store for Rails 3, based on redis-store}
   s.email = %q{labs@buddybrand.de}
   s.extra_rdoc_files = [
     "README.md"
@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.6}
-  s.summary = %q{a namespaced Redis Cache Store for Rails 3}
+  s.summary = %q{A namespaced Redis Cache Store for Rails 3}
   s.test_files = [
     "spec/spec_helper.rb",
      "spec/redis/distributed_marshaled_redis_spec.rb",
