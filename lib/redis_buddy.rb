@@ -1,5 +1,5 @@
 require 'redis'
-require 'redis/dist_redis'
+require 'redis/distributed'
 require 'redis/namespace'
 
 require 'redis/redis_factory'
