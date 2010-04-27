@@ -15,8 +15,8 @@ begin
     s.description = "A namespaced Redis Cache Store for Rails 3, based on redis-store"
     s.authors = ["Ole Riesenberg"]
     s.files = FileList["{lib,test}/**/*.rb"]
-    s.add_dependency "redis", ">= 0.2.0"
-    s.add_dependency "redis-namespace", ">= 0.3.0"
+    s.add_dependency "redis", ">= 1.0.6"
+    s.add_dependency "redis-namespace", ">= 0.4.2"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
