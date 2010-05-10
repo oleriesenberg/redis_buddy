@@ -60,7 +60,7 @@ module ActiveSupport
       end
 
       def clear
-        @data.flush_db
+        @data.flushdb
       end
 
       def info
