@@ -10,9 +10,16 @@ module ActiveSupport
       def write(key, value, options = nil)
         super do
           method = options && options[:unless_exist] ? :set_unless_exists : :set
-          returning @data.send(method, key, value, options) do 
-            @data.expire key, options[:expire] if options && options[:expire]
+
+	  if options && options[:expire]
+	    if info['redis_version'] <= '1.2.6'
+              method = :set
+              options = options[:expire]
+	    else
+              @data.send(:setex, options[:expire], value)
+	    end
 	  end
+	  @data.send(method, key, value, options) if options.is_a?(Integer) || !options[:expire]
         end
       end
 
