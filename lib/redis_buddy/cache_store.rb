@@ -19,7 +19,7 @@ module ActiveSupport
               @data.send(:setex, options[:expire], value)
 	    end
 	  end
-	  @data.send(method, key, value, options) if options.is_a?(Integer) || !options[:expire]
+	  @data.send(method, key, value, options) if options.is_a?(Integer) || !options || (options && !options[:expire])
         end
       end
 
