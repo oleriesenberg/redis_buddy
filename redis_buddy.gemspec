@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{redis_buddy}
-  s.version = "0.1.6"
+  s.version = "0.1.7"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Ole Riesenberg"]
-  s.date = %q{2010-05-10}
+  s.date = %q{2010-05-12}
   s.description = %q{A namespaced Redis Cache Store for Rails 3, based on redis-store}
   s.email = %q{labs@buddybrand.de}
   s.extra_rdoc_files = [
