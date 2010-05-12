@@ -23,7 +23,7 @@ module ActiveSupport
         end
       end
 
-      def read(key)
+      def read(key, options = nil)
         super do
           @data.get key
         end
