@@ -41,7 +41,7 @@ module ActiveSupport
 
       def exist?(key, options = nil)
         super do
-          @data.key? key
+          @data.exists key
         end
       end
 
