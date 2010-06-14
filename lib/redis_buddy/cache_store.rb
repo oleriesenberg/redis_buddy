@@ -35,7 +35,7 @@ module ActiveSupport
 
       def delete(key, options = nil)
         super do
-          @data.delete key
+          @data.del key
         end
       end
 
