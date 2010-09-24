@@ -7,7 +7,7 @@ class RedisFactory
       if addresses.size > 1
         DistributedMarshaledRedis.new addresses
       else
-        MarshaledRedis.new addresses.first || {}
+        JsonRedis.new addresses.first || {}
       end
     end
 

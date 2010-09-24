@@ -1,13 +1,4 @@
-# (c) 2009 Luca Guidi
-
-class DistributedMarshaledRedis < Redis::Distributed
-  def initialize(addresses)
-    nodes = addresses.map do |address|
-      MarshaledRedis.new address
-    end
-    @ring = Redis::HashRing.new nodes
-  end
-
-  alias_method :flush_db, :delete_cloud!
+# backwards compat
+class DistributedMarshaledRedis < DistributedJsonRedis
 end
 

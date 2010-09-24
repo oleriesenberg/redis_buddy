@@ -8,54 +8,47 @@ module ActiveSupport
       end
 
       def write(key, value, options = nil)
-        super do
-          method = options && options[:unless_exist] ? :set_unless_exists : :set
+        method = options && options[:unless_exist] ? :set_unless_exists : :set
 
-	  if options && options[:expire]
-	    if info['redis_version'] <= '1.2.6'
-              method = :set
-              options = options[:expire]
-	    else
-              @data.send(:setex, options[:expire], value)
-	    end
-	  end
-	  @data.send(method, key, value, options) if options.is_a?(Integer) || !options || (options && !options[:expire])
+        if options && options[:expire]
+          if (info.is_a?(Array) ? info.first['redis_version'] : info['redis_version']) <= '1.2.6'
+            @data.send(:set, key, value)
+            @data.send(:expire, key, options[:expire])
+          else
+            @data.send(:setex, key, value,options[:expire])
+          end
+        else
+          @data.send(method, key, value)
         end
       end
 
-      def read(key, options = nil)
+      def read(key)
+        @data.get(key)
+      end
+
+      def ttl(key)
+        @data.ttl(key)
+      end
+
+      def delete(key)
+        @data.del(key)
+      end
+
+      def exist?(key)
+        @data.exists(key)
+      end
+
+      def increment(key, amount = nil)
+        amount.nil? ? @data.incr(key) : @data.incrby(key, amount)
+      end
+
+      def decrement(key, amount = nil)
+        amount.nil? ? @data.decr(key) : @data.decrby(key, amount)
+      end
+
+      def delete_matched(matcher)
         super do
-          @data.get key
-        end
-      end
-
-      def ttl(key, options = nil)
-        @data.ttl key, options
-      end
-
-      def delete(key, options = nil)
-        super do
-          @data.del key
-        end
-      end
-
-      def exist?(key, options = nil)
-        super do
-          @data.exists key
-        end
-      end
-
-      def increment(key, amount = 1)
-        @data.incr key, amount
-      end
-
-      def decrement(key, amount = 1)
-        @data.decr key, amount
-      end
-
-      def delete_matched(matcher, options = nil)
-        super do
-          @data.keys(matcher).each { |key| @data.delete key }
+          @data.keys(matcher).each { |key| @data.del(key) }
         end
       end
 
