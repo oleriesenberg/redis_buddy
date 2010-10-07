@@ -16,7 +16,7 @@ begin
     s.authors = ["Ole Riesenberg"]
     s.files = FileList["{lib,test}/**/*.rb"]
     s.add_dependency "redis", "~> 2.0.6"
-    s.add_dependency "redis-namespace", "~> 0.10.0"
+    s.add_dependency "redis-namespace", ">= 0.8.0"
     s.add_dependency "yajl-ruby"
   end
   Jeweler::GemcutterTasks.new
