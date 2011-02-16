@@ -1,3 +1,2 @@
-module RedisBuddy
-  # Your code goes here...
-end
+require 'redis/redis_factory'
+require 'redis_buddy/cache_store'
