@@ -22,6 +22,4 @@
 
 ## Copyright
 
-(c) 2010 Ole Riesenberg, released under the MIT license
-
-redis-store (c) 2009 Luca Guidi - [http://lucaguidi.com](http://lucaguidi.com), released under the MIT license
+(c) 2011 Ole Riesenberg, released under the MIT license
