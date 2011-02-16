@@ -13,11 +13,11 @@
 
 ### config/application.rb
 
-    config.cache_store = :redis_buddy_store
+    config.cache_store = RedisBuddy::CacheStore.new('127.0.0.1')
 
     or
 
-    config.cache_store = :redis_buddy_store, ['127.0.0.1', '1.2.3.4']
+    config.cache_store = RedisBuddy::CacheStore.new(['127.0.0.1', '10.20.1.40'])
 
 
 ## Copyright
