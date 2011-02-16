@@ -5,9 +5,9 @@ class RedisFactory
     def create(*addresses)
       addresses = extract_addresses(addresses)
       if addresses.size > 1
-        DistributedMarshaledRedis.new addresses
+        Redis::Distributed.new addresses
       else
-        JsonRedis.new addresses.first || {}
+        Redis.new addresses.first || {}
       end
     end
 
